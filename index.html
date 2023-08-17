@@ -101,7 +101,7 @@
   <script>
     window.addEventListener('DOMContentLoaded', function() {
       // Array de resoluciones deseadas
-      var desiredResolutions = [1680, 1440, 1366, 1280];
+      var desiredResolutions = [1920, 1680, 1440, 1366, 1280,1024];
 
       // Detectar la resolución de pantalla
       var screenWidth = window.innerWidth;
@@ -111,7 +111,7 @@
       if (desiredResolutions.includes(screenWidth)) {
         var popup = document.querySelector('.resolution-popup');
         var resolutionType = screenWidth + 'x' + screenHeight; // Crear el tipo de resolución
-        var popupMessage = "Tu resolución de pantalla (" + resolutionType + ") no es óptima para visualizar nuestro contenido. Te recomendamos ajustar la resolución para una mejor experiencia. <a href='autos.html'>Ver más</a>.";
+        var popupMessage = "Tu resolución de pantalla es (" + resolutionType + ") Esta informacion la pasamos a analytics";
         popup.querySelector('p').innerHTML = popupMessage;
         popup.style.display = 'flex';
 
