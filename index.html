@@ -1,107 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, p {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+  }
+
+  .resolution-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .popup-content a {
+    color: #00ffcc;
+    text-decoration: none;
+  }
+
+  .popup-content a:hover {
+    text-decoration: underline;
+  }
+
+  .close-button {
+    background-color: #f77f00;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .close-button:hover {
+    background-color: #ffaa00;
+  }
+
+  .card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .main-paragraph {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  .action-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .action-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+
+  .action-button:hover {
+    background-color: #0056b3;
+  }
+</style> 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=TU_ID_DE_SEGUIMIENTO"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'TU_ID_DE_SEGUIMIENTO');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1, h2, p {
-      text-align: center;
-      margin: 20px 0;
-      font-size: 24px;
-    }
-
-    .resolution-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.8);
-      color: #333;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .popup-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .popup-content a {
-      color: #00ffcc;
-      text-decoration: none;
-    }
-
-    .popup-content a:hover {
-      text-decoration: underline;
-    }
-
-    .close-button {
-      background-color: #f77f00;
-      border: none;
-      color: #fff;
-      padding: 10px 20px;
-      margin-top: 15px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .close-button:hover {
-      background-color: #ffaa00;
-    }
-
-    .card {
-      background-color: #f0f0f0;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .main-paragraph {
-      text-align: center;
-      font-size: 20px;
-      padding: 20px;
-    }
-
-    .action-buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .action-button {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0 10px;
-      font-size: 18px;
-      transition: background-color 0.3s;
-    }
-
-    .action-button:hover {
-      background-color: #0056b3;
-    }
+    /* Tu estilo CSS aquí */
   </style>
   <title>Aviso de Resolución</title>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
       // Array de resoluciones deseadas
-      var desiredResolutions = [1920, 1680, 1440, 1366, 1280,1024];
+      var desiredResolutions = [1920, 1680, 1440, 1366, 1280, 1024];
 
       // Detectar la resolución de pantalla
       var screenWidth = window.innerWidth;
@@ -111,9 +126,15 @@
       if (desiredResolutions.includes(screenWidth)) {
         var popup = document.querySelector('.resolution-popup');
         var resolutionType = screenWidth + 'x' + screenHeight; // Crear el tipo de resolución
-        var popupMessage = "Tu resolución de pantalla es (" + resolutionType + ") Esta informacion la pasamos a analytics";
+        var popupMessage = "Tu resolución de pantalla es (" + resolutionType + ")";
         popup.querySelector('p').innerHTML = popupMessage;
         popup.style.display = 'flex';
+
+        // Enviar evento personalizado a Google Analytics
+        gtag('event', 'Resolución Detectada', {
+          'event_category': 'Resolución',
+          'event_label': resolutionType
+        });
 
         // Cerrar el aviso al hacer clic en el botón
         var closeButton = document.querySelector('.close-button');
@@ -146,9 +167,10 @@
     <p>La resolución se refiere a la cantidad de píxeles que componen una imagen en la pantalla, generalmente expresada como ancho x alto (por ejemplo, 1920x1080). Las dimensiones de pantalla, por otro lado, indican el tamaño físico de la pantalla en términos de longitud y altura, generalmente en pulgadas. Aunque ambos conceptos son importantes en el diseño web, la resolución es crucial porque afecta directamente la claridad de las imágenes y la presentación visual de los elementos en la página. Un diseño bien adaptado a la resolución de pantalla adecuada garantiza que el contenido se vea nítido y esté correctamente alineado.</p>
   </div>
   
-  <div class="action-buttons">
-    <button class="action-button">Explorar</button>
-    <button class="action-button">Más Información</button>
-  </div>
+
 </body>
 </html>
+
+
+
+
