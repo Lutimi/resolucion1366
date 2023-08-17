@@ -100,15 +100,21 @@
   <title>Aviso de Resolución</title>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
+      // Array de resoluciones deseadas
+      var desiredResolutions = [1680, 1440, 1366, 1280];
+
       // Detectar la resolución de pantalla
       var screenWidth = window.innerWidth;
       var screenHeight = window.innerHeight;
-      
-      // Mostrar el aviso emergente si la resolución es igual a 1366 píxeles de ancho
-      if (screenWidth === 1366) {
+
+      // Mostrar el aviso emergente si la resolución está en el array de resoluciones deseadas
+      if (desiredResolutions.includes(screenWidth)) {
         var popup = document.querySelector('.resolution-popup');
+        var resolutionType = screenWidth + 'x' + screenHeight; // Crear el tipo de resolución
+        var popupMessage = "Tu resolución de pantalla (" + resolutionType + ") no es óptima para visualizar nuestro contenido. Te recomendamos ajustar la resolución para una mejor experiencia. <a href='autos.html'>Ver más</a>.";
+        popup.querySelector('p').innerHTML = popupMessage;
         popup.style.display = 'flex';
-        
+
         // Cerrar el aviso al hacer clic en el botón
         var closeButton = document.querySelector('.close-button');
         closeButton.addEventListener('click', function() {
@@ -121,7 +127,7 @@
 <body>
   <div class="resolution-popup">
     <div class="popup-content">
-      <p>u resolución de pantalla no es óptima para visualizar nuestro contenido. Te recomendamos ajustar la resolución para una mejor experiencia. <a href="autos.html">Ver más</a>.</p>
+      <p>Tu resolución de pantalla no es óptima para visualizar nuestro contenido. Te recomendamos ajustar la resolución para una mejor experiencia. <a href="autos.html">Ver más</a>.</p>
       <button class="close-button">Cerrar</button>
     </div>
   </div>
